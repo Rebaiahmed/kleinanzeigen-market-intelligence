@@ -1,0 +1,7 @@
+[
+  {"id":"synthetic-01","category":"smartphone","left":"ExamplePhone 12 128 GB","right":"ExamplePhone 12 128 GB","label":true,"reason":"same model and storage"},
+  {"id":"synthetic-02","category":"smartphone","left":"ExamplePhone 12 128 GB","right":"ExamplePhone 12 Pro 128 GB","label":false,"reason":"different model variant"},
+  {"id":"synthetic-03","category":"smartphone","left":"ExamplePhone 12 128 GB","right":"ExamplePhone 12 256 GB","label":false,"reason":"different storage"},
+  {"id":"synthetic-04","category":"gaming","left":"ExampleConsole 5 Disc","right":"ExampleConsole 5 Digital","label":false,"reason":"different edition"},
+  {"id":"synthetic-05","category":"furniture","left":"ExampleDesk white 120 cm","right":"ExampleDesk white 120 cm","label":true,"reason":"same specified item"}
+]

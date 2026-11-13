@@ -1,0 +1,4 @@
+[
+  {"id":"ambiguous-01","left":"ExamplePhone 12","right":"ExamplePhone 12 128 GB","label":"unknown","reason":"storage missing"},
+  {"id":"ambiguous-02","left":"ExampleConsole 5","right":"ExampleConsole 5 Disc","label":"unknown","reason":"edition missing"}
+]
