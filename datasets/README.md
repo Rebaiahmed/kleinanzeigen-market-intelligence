@@ -5,3 +5,5 @@
 `examples/*.synthetic.json` contain fictional numbers used solely to illustrate input formats; their dates, prices, models and predictions are not real observations. No transaction prices are included.
 
 For future real datasets record the source, collection and observation dates, collection permission, redistribution license, sample size, schema, relevant privacy review, geographic scope and bias. Exclude direct identifiers, listing text or photos without an established right to publish. Establish permission for derivative data; de-identification alone does not grant rights.
+
+The `.csv` files alongside the JSON fixtures contain the same synthetic cases, provided for spreadsheet users. The three `examples/*.synthetic.csv` files mirror their JSON counterparts and can be used directly with the CLI; the golden matching cases are reference examples and do not contain predictions. The screenshots under `docs/images/` are from an internal fixture-based product review, not live marketplace observations.

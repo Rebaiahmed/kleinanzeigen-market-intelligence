@@ -1,0 +1,3 @@
+id,left,right,label,reason
+ambiguous-01,ExamplePhone 12,ExamplePhone 12 128 GB,unknown,storage missing
+ambiguous-02,ExampleConsole 5,ExampleConsole 5 Disc,unknown,edition missing

@@ -20,7 +20,7 @@ jobs:
       - run: python -m market_intelligence.cli matching examples/matching-predictions.synthetic.json
       - name: Scan tracked files and Git history
         run: |
-          detect-secrets scan --all-files > /tmp/secret-scan.json
+          detect-secrets scan --all-files --exclude-files '(^|/)\.git/' > /tmp/secret-scan.json
           python scripts/check_secret_scan.py /tmp/secret-scan.json
           mkdir -p /tmp/history-scan
           git log --format=%H | while read -r commit; do
