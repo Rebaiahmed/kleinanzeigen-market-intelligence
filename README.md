@@ -71,6 +71,10 @@ For example: `python -m market_intelligence.cli asking-prices my-data.csv`. Extr
 
 Only use data you have the right to collect and process. Asking prices are not transaction prices, and a sample may not represent the market. See [dataset provenance](datasets/README.md) and [methodology](docs/methodology.md).
 
+## Research reports
+
+We plan to publish a market research report **every one to two weeks**, when reliable, rights-cleared data is available. Our intended historical archive starts in September 2026; no verified report for that period is available yet. See the [report archive and publication criteria](reports/README.md).
+
 ## Data and roadmap
 
 The fictional examples cover smartphones, gaming and furniture. There are no rights-cleared real datasets, independently verified benchmark results, or model comparisons in this release. Listing-optimization evaluation, licensed data and broader categories are future work. The workflow is **CSV or JSON → offline Python analysis → JSON results**.
