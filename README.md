@@ -1,43 +1,90 @@
 # Kleinanzeigen Market Intelligence
 
-**Deutsch:** Ein unabhängiges Open-Source-Projekt für reproduzierbare Analysen und die Bewertung von Preis- und Produktvergleichsverfahren. Die Beispieldaten sind synthetisch und beschreiben keinen realen Markt. [Deutsche Einführung](README.de.md).
+Tools for exploring **asking prices** and evaluating product matching and price estimates in secondhand marketplaces. Independent research by [AnzeigenBoost](https://anzeigenboost.de/).
 
-This repository provides small, offline tools for evaluating marketplace asking-price estimates and product matching, and summarizing price distributions. It is independently useful without an AnzeigenBoost account. It does not scrape any marketplace.
+**Deutsch:** Dieses Projekt bietet Werkzeuge für Marktanalysen und KI-Bewertungen. Die Beispieldaten sind künstlich erstellt – sie zeigen keine tatsächlichen Marktpreise. [Deutsche Einführung](README.de.md).
 
-## What's included
+> **Data status:** The included datasets and screenshots use fictional fixture data. They are not real listings, market findings, sales prices or model benchmark results.
 
-- Asking-price counts, median and linearly interpolated 25th/75th percentiles per category.
-- Price prediction MAE, median absolute error, MAPE excluding zero reference prices, and over/underestimate counts.
-- Binary matching precision, recall, F1 and confusion counts. Ambiguous examples are held separately, not scored as negatives.
-- A small explicitly synthetic dataset and test inputs. **These are examples of code behavior, not a benchmark of any model or real market.**
+## Explore the tools
 
-Python 3.10+ is required; runtime uses only the standard library. From the repository root:
+| Tool | What it does | Try it |
+| --- | --- | --- |
+| Asking-price analysis | Count, median and 25th/75th percentiles by category | [Sample CSV](examples/asking-prices.synthetic.csv) |
+| Price-estimate evaluation | MAE, median error, MAPE and over/underestimates | [Sample CSV](examples/price-predictions.synthetic.csv) |
+| Product-matching evaluation | Precision, recall, F1 and confusion counts | [Sample CSV](examples/matching-predictions.synthetic.csv) |
+| Matching examples | Same, different and ambiguous product variations | [Golden dataset](datasets/golden/) |
+
+Runs locally with Python 3.10+ and the standard library. No account, API key, network requests or scraping are needed.
+
+## See the product
+
+These screenshots show the **AnzeigenBoost extension**, not a user interface provided by this repository. Both were captured from fixture-based review screens; the listings, prices and results are illustrative. Features and credit requirements may change.
+
+<details>
+<summary><strong>Price check — comparable asking prices</strong></summary>
+
+![AnzeigenBoost price check, shown with fictional fixture listings and prices](docs/images/check-price-fixture.png)
+
+</details>
+
+<details>
+<summary><strong>Competitor check — example offers</strong></summary>
+
+![AnzeigenBoost competitor check, shown with fictional fixture listings and prices](docs/images/competitor-check-fixture.png)
+
+</details>
+
+## Quick start
+
+Clone the repository and run an example from its root:
 
 ```sh
-python -m unittest discover -s tests -v
-python -m market_intelligence.cli asking-prices examples/asking-prices.synthetic.json
-python -m market_intelligence.cli prices examples/price-predictions.synthetic.json
-python -m market_intelligence.cli matching examples/matching-predictions.synthetic.json
+git clone https://github.com/Rebaiahmed/kleinanzeigen-market-intelligence.git
+cd kleinanzeigen-market-intelligence
+python -m market_intelligence.cli asking-prices examples/asking-prices.synthetic.csv
 ```
 
-Each CLI input is a JSON array. Price metric rows contain numeric `reference` and `predicted`; matching rows contain boolean `label` and `predicted`; asking-price rows contain `category` and `asking_price_eur`. Values must be non-negative and finite. Zero-reference rows are excluded from percentage error and counted separately. Undefined classification metrics return JSON null. Examples have fictional values and must not be presented as findings.
+The output is JSON with a count, median and quartiles for each category. **The values in the example are invented**, so they must not be presented as real-world findings.
 
-## Datasets and research
+More examples:
 
-See [dataset provenance](datasets/README.md) and [research methodology](docs/methodology.md). The included cases demonstrate smartphones, gaming and furniture; vehicles, tools and other categories require appropriately licensed data and have no real observations here. No marketplace dataset or independently verified benchmark results are published. Listing optimization and model comparison are future work; no model calls or API credentials are required by this version.
+```sh
+python -m market_intelligence.cli prices examples/price-predictions.synthetic.csv
+python -m market_intelligence.cli matching examples/matching-predictions.synthetic.csv
+python -m unittest discover -s tests -v
+```
 
-Architecture: JSON input → offline analysis or metric functions → JSON summary. Separate source/prediction files allow independent inspection. Tests validate formulas and fixture structure. The package does not collect data or make network requests.
+JSON arrays are also supported; equivalent `.json` files are alongside the CSV examples.
+
+## Use your own data
+
+Save a UTF-8 CSV with a header row and select the matching command:
+
+| Command | Required columns | Notes |
+| --- | --- | --- |
+| `asking-prices` | `category`, `asking_price_eur` | A category and a non-negative asking price in euros |
+| `prices` | `reference`, `predicted` | Non-negative numeric reference and estimate |
+| `matching` | `label`, `predicted` | Boolean `true` or `false` for each |
+
+For example: `python -m market_intelligence.cli asking-prices my-data.csv`. Extra columns are ignored. Input prices must be finite and non-negative. Zero-reference rows are excluded from MAPE and reported separately. Undefined classification metrics are `null`. Ambiguous examples are stored separately and should not be treated as negative matches.
+
+Only use data you have the right to collect and process. Asking prices are not transaction prices, and a sample may not represent the market. See [dataset provenance](datasets/README.md) and [methodology](docs/methodology.md).
+
+## Data and roadmap
+
+The fictional examples cover smartphones, gaming and furniture. There are no rights-cleared real datasets, independently verified benchmark results, or model comparisons in this release. Listing-optimization evaluation, licensed data and broader categories are future work. The workflow is **CSV or JSON → offline Python analysis → JSON results**.
 
 ## About AnzeigenBoost
 
-[AnzeigenBoost](https://anzeigenboost.de/) is a Chrome extension for sellers on Kleinanzeigen, with listing optimization, competitor comparison, price suggestions, scheduled reposting and selling workflow tools. Availability can vary by account or feature settings. [Chrome Web Store](https://chromewebstore.google.com/detail/noagiapohlenpolcbeghlmngalapbobe) · [Product guides](https://anzeigenboost.de/ratgeber/anzeige-als-vorlage-speichern)
+[AnzeigenBoost](https://anzeigenboost.de/) is a Chrome extension designed to help Kleinanzeigen sellers optimize listings, compare competitors and prices, schedule reposts and improve selling workflows. Availability can vary by account or feature settings.
 
-**Want to use these insights when selling on Kleinanzeigen? Explore AnzeigenBoost.**
+**Want to use these insights when selling on Kleinanzeigen? [Explore AnzeigenBoost](https://anzeigenboost.de/).**
+
+[Chrome Web Store](https://chromewebstore.google.com/detail/noagiapohlenpolcbeghlmngalapbobe) · [Product guide](https://anzeigenboost.de/ratgeber/anzeige-als-vorlage-speichern)
 
 This is an independent research and engineering initiative by AnzeigenBoost. It is not affiliated with, endorsed by, or operated by Kleinanzeigen. Product and brand names belong to their respective owners.
 
-## Contributing and security
+## Contributing and license
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Share data only when you can document collection, consent, redistribution permission and privacy safeguards. Asking prices are not transaction prices; samples need not represent the overall market. No personal data or live marketplace content should be submitted without documented rights and review.
-
-Original code and synthetic fixtures are released under the [MIT License](LICENSE). No third-party dataset or software is redistributed. Python is a separately licensed runtime.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) before contributing. Do not share personal data, private listings or third-party material without documented rights. Original code and synthetic fixtures are available under the [MIT License](LICENSE).

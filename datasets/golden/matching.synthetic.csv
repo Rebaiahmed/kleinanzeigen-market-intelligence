@@ -1,0 +1,6 @@
+id,category,left,right,label,reason
+synthetic-01,smartphone,ExamplePhone 12 128 GB,ExamplePhone 12 128 GB,true,same model and storage
+synthetic-02,smartphone,ExamplePhone 12 128 GB,ExamplePhone 12 Pro 128 GB,false,different model variant
+synthetic-03,smartphone,ExamplePhone 12 128 GB,ExamplePhone 12 256 GB,false,different storage
+synthetic-04,gaming,ExampleConsole 5 Disc,ExampleConsole 5 Digital,false,different edition
+synthetic-05,furniture,ExampleDesk white 120 cm,ExampleDesk white 120 cm,true,same specified item
