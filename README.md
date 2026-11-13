@@ -1,4 +1,6 @@
-# Kleinanzeigen Market Intelligence
+# 📊 Kleinanzeigen Market Intelligence
+
+<img src="docs/images/anzeigenboost-icon.png" alt="AnzeigenBoost icon" width="72" align="right">
 
 Tools for exploring **asking prices** and evaluating product matching and price estimates in secondhand marketplaces. Independent research by [AnzeigenBoost](https://anzeigenboost.de/).
 
@@ -6,36 +8,34 @@ Tools for exploring **asking prices** and evaluating product matching and price 
 
 > **Data status:** The included datasets and screenshots use fictional fixture data. They are not real listings, market findings, sales prices or model benchmark results.
 
-## Explore the tools
+## 🔍 Explore the tools
 
 | Tool | What it does | Try it |
 | --- | --- | --- |
-| Asking-price analysis | Count, median and 25th/75th percentiles by category | [Sample CSV](examples/asking-prices.synthetic.csv) |
-| Price-estimate evaluation | MAE, median error, MAPE and over/underestimates | [Sample CSV](examples/price-predictions.synthetic.csv) |
-| Product-matching evaluation | Precision, recall, F1 and confusion counts | [Sample CSV](examples/matching-predictions.synthetic.csv) |
-| Matching examples | Same, different and ambiguous product variations | [Golden dataset](datasets/golden/) |
+| 📊 Asking-price analysis | Count, median and 25th/75th percentiles by category | [Sample CSV](examples/asking-prices.synthetic.csv) |
+| 💶 Price-estimate evaluation | MAE, median error, MAPE and over/underestimates | [Sample CSV](examples/price-predictions.synthetic.csv) |
+| 🧩 Product-matching evaluation | Precision, recall, F1 and confusion counts | [Sample CSV](examples/matching-predictions.synthetic.csv) |
+| 📁 Matching examples | Same, different and ambiguous product variations | [Golden dataset](datasets/golden/) |
 
 Runs locally with Python 3.10+ and the standard library. No account, API key, network requests or scraping are needed.
 
-## See the product
+## 📸 See AnzeigenBoost in action
 
 These screenshots show the **AnzeigenBoost extension**, not a user interface provided by this repository. Both were captured from fixture-based review screens; the listings, prices and results are illustrative. Features and credit requirements may change.
 
-<details>
-<summary><strong>Price check — comparable asking prices</strong></summary>
+### 💶 Price check
 
-![AnzeigenBoost price check, shown with fictional fixture listings and prices](docs/images/check-price-fixture.png)
+Compare an illustrative asking price with a set of comparable offers.
 
-</details>
+<img src="docs/images/check-price-fixture.png" alt="AnzeigenBoost price check with fictional fixture prices" width="520">
 
-<details>
-<summary><strong>Competitor check — example offers</strong></summary>
+### 🔍 Competitor check
 
-![AnzeigenBoost competitor check, shown with fictional fixture listings and prices](docs/images/competitor-check-fixture.png)
+See an example competitor overview, shown here with fixture listings.
 
-</details>
+<img src="docs/images/competitor-check-fixture.png" alt="AnzeigenBoost competitor check with fictional fixture listings" width="520">
 
-## Quick start
+## 🚀 Quick start
 
 Clone the repository and run an example from its root:
 
@@ -57,7 +57,7 @@ python -m unittest discover -s tests -v
 
 JSON arrays are also supported; equivalent `.json` files are alongside the CSV examples.
 
-## Use your own data
+## 📂 Use your own data
 
 Save a UTF-8 CSV with a header row and select the matching command:
 
@@ -71,15 +71,15 @@ For example: `python -m market_intelligence.cli asking-prices my-data.csv`. Extr
 
 Only use data you have the right to collect and process. Asking prices are not transaction prices, and a sample may not represent the market. See [dataset provenance](datasets/README.md) and [methodology](docs/methodology.md).
 
-## Research reports
+## 🗓️ Research reports
 
 We plan to publish a market research report **every one to two weeks**, when reliable, rights-cleared data is available. Our intended historical archive starts in September 2026; no verified report for that period is available yet. See the [report archive and publication criteria](reports/README.md).
 
-## Data and roadmap
+## 🧭 Data and roadmap
 
 The fictional examples cover smartphones, gaming and furniture. There are no rights-cleared real datasets, independently verified benchmark results, or model comparisons in this release. Listing-optimization evaluation, licensed data and broader categories are future work. The workflow is **CSV or JSON → offline Python analysis → JSON results**.
 
-## About AnzeigenBoost
+## 💚 About AnzeigenBoost
 
 [AnzeigenBoost](https://anzeigenboost.de/) is a Chrome extension designed to help Kleinanzeigen sellers optimize listings, compare competitors and prices, schedule reposts and improve selling workflows. Availability can vary by account or feature settings.
 
@@ -89,6 +89,6 @@ The fictional examples cover smartphones, gaming and furniture. There are no rig
 
 This is an independent research and engineering initiative by AnzeigenBoost. It is not affiliated with, endorsed by, or operated by Kleinanzeigen. Product and brand names belong to their respective owners.
 
-## Contributing and license
+## 🤝 Contributing and license
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) before contributing. Do not share personal data, private listings or third-party material without documented rights. Original code and synthetic fixtures are available under the [MIT License](LICENSE).
